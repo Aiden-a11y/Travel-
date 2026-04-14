@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
     }
 
     const claudeMessages = messages.map((m) => ({
-      role: (m.role === "model" ? "assistant" : m.role) as "user" | "assistant",
+      role: m.role,
       content: m.content,
     }));
 
