@@ -60,7 +60,7 @@ export default function RouteMap({ trip }: { trip: TripPlan }) {
     let map: import("leaflet").Map | null = null;
 
     import("leaflet").then((L) => {
-      import("leaflet/dist/leaflet.css");
+      // CSS is imported via globals
       if (!mapDivRef.current) return;
 
       // Destroy any previous map instance

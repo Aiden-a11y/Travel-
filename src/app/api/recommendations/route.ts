@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
     return Response.json({ recommendations });
   } catch (error) {
     console.error("[/api/recommendations]", error);
-    if (error instanceof Anthropic.APIStatusError && error.status === 429) {
+    if (error instanceof Error && "status" in error && (error as any).status === 429) {
       return Response.json(
         { error: "API 요청 한도 초과입니다. 잠시 후 다시 시도해주세요." },
         { status: 429 }
