@@ -50,7 +50,7 @@ export default function TripsPage() {
           </Link>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 overflow-x-auto">
           <AnimatePresence>
             {trips.map((trip) => (
               <motion.div
@@ -85,14 +85,14 @@ export default function TripsPage() {
                 <div className="p-5">
                   <h2 className="text-lg font-semibold text-white truncate">{trip.title}</h2>
 
-                  <div className="flex items-center gap-1 text-white/40 text-sm mt-1.5">
-                    <Calendar size={13} />
-                    <span>{trip.startDate} ~ {trip.endDate}</span>
+                  <div className="flex items-center gap-1 text-white/40 text-sm mt-1.5 min-w-0">
+                    <Calendar size={13} className="shrink-0" />
+                    <span className="truncate">{trip.startDate} ~ {trip.endDate}</span>
                   </div>
 
-                  <div className="flex items-center gap-1 text-white/40 text-sm mt-1">
-                    <MapPin size={13} />
-                    <span>{trip.destinations.join(" → ")}</span>
+                  <div className="flex items-center gap-1 text-white/40 text-sm mt-1 min-w-0">
+                    <MapPin size={13} className="shrink-0" />
+                    <span className="truncate">{trip.destinations.join(" → ")}</span>
                   </div>
 
                   <div className="flex items-center gap-3 mt-5">

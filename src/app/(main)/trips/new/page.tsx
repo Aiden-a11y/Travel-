@@ -370,33 +370,29 @@ function ActivityForm({
         ))}
       </div>
 
-      <div className="grid grid-cols-2 gap-3">
-        <div className="flex items-center gap-2">
-          <Clock size={13} className="text-white/30" />
-          <input
-            type="time"
-            value={activity.startTime ?? ""}
-            onChange={(e) => onChange({ startTime: e.target.value })}
-            className="flex-1 px-2 py-1.5 bg-white/8 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:border-blue-500 transition-colors"
-          />
-          <span className="text-white/20 text-xs">~</span>
-          <input
-            type="time"
-            value={activity.endTime ?? ""}
-            onChange={(e) => onChange({ endTime: e.target.value })}
-            className="flex-1 px-2 py-1.5 bg-white/8 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:border-blue-500 transition-colors"
-          />
-        </div>
-        <div className="flex items-center gap-2">
-          <DollarSign size={13} className="text-white/30" />
-          <input
-            type="number"
-            value={activity.estimatedCost ?? ""}
-            onChange={(e) => onChange({ estimatedCost: Number(e.target.value) })}
-            placeholder="예상 비용"
-            className="flex-1 px-2 py-1.5 bg-white/8 border border-white/10 rounded-lg text-white text-sm placeholder-white/20 focus:outline-none focus:border-blue-500 transition-colors"
-          />
-        </div>
+      <div className="flex items-center gap-2 min-w-0">
+        <Clock size={13} className="text-white/30 shrink-0" />
+        <input
+          type="time"
+          value={activity.startTime ?? ""}
+          onChange={(e) => onChange({ startTime: e.target.value })}
+          className="w-0 flex-1 min-w-0 px-2 py-1.5 bg-white/8 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:border-blue-500 transition-colors"
+        />
+        <span className="text-white/20 text-xs shrink-0">~</span>
+        <input
+          type="time"
+          value={activity.endTime ?? ""}
+          onChange={(e) => onChange({ endTime: e.target.value })}
+          className="w-0 flex-1 min-w-0 px-2 py-1.5 bg-white/8 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:border-blue-500 transition-colors"
+        />
+        <DollarSign size={13} className="text-white/30 shrink-0" />
+        <input
+          type="number"
+          value={activity.estimatedCost ?? ""}
+          onChange={(e) => onChange({ estimatedCost: Number(e.target.value) })}
+          placeholder="비용"
+          className="w-0 flex-[0.8] min-w-0 px-2 py-1.5 bg-white/8 border border-white/10 rounded-lg text-white text-sm placeholder-white/20 focus:outline-none focus:border-blue-500 transition-colors"
+        />
       </div>
 
       <div className="flex items-center gap-2">
@@ -452,7 +448,7 @@ function DayCard({ day, dayIndex }: { day: TripDay; dayIndex: number }) {
         <div className="w-10 h-10 rounded-full bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-blue-400 font-bold text-sm shrink-0">
           {day.dayNumber}
         </div>
-        <div className="flex-1 grid grid-cols-2 gap-3">
+        <div className="flex-1 min-w-0 grid grid-cols-2 gap-3">
           <div>
             <label className="block text-xs text-white/40 mb-1">{day.date} — 목적지</label>
             <input
@@ -509,7 +505,7 @@ function StepDays() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 overflow-x-auto">
       {draft.days.map((day, index) => (
         <DayCard key={day.id} day={day} dayIndex={index} />
       ))}
